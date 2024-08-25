@@ -19,19 +19,27 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: '/home',
-          builder: (context, state) => const HomePage(),
+          pageBuilder: (context, state) => const MaterialPage(
+            child: HomePage(),
+          ),
         ),
         GoRoute(
           path: '/profile',
-          builder: (context, state) => const ProfilePage(),
+          pageBuilder: (context, state) => const MaterialPage(
+            child: ProfilePage(),
+          ),
         ),
         GoRoute(
           path: '/settings',
-          builder: (context, state) => const SettingsPage(),
+          pageBuilder: (context, state) => const MaterialPage(
+            child: SettingsPage(),
+          ),
         ),
         GoRoute(
           path: '/about',
-          builder: (context, state) => const AboutPage(),
+          pageBuilder: (context, state) => const MaterialPage(
+            child: AboutPage(),
+          ),
         ),
       ],
       builder: (context, state, child) {
