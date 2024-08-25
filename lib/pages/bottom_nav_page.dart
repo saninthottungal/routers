@@ -13,7 +13,8 @@ class BottomNavBarPage extends StatelessWidget {
         child: child,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: calculateSelectedIndex(context),
+        currentIndex: _calculateSelectedIndex(context),
+        onTap: (index) => _onItemTapped(context, index),
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
         items: const [
@@ -38,7 +39,7 @@ class BottomNavBarPage extends StatelessWidget {
     );
   }
 
-  int calculateSelectedIndex(BuildContext context) {
+  int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.path;
     if (location.startsWith('/home')) {
       return 0;
@@ -50,6 +51,18 @@ class BottomNavBarPage extends StatelessWidget {
       return 3;
     } else {
       return 0;
+    }
+  }
+
+  void _onItemTapped(BuildContext context, int index) {
+    if (index == 0) {
+      GoRouter.of(context).go('/home');
+    } else if (index == 1) {
+      GoRouter.of(context).go('/profile');
+    } else if (index == 2) {
+      GoRouter.of(context).go('/settings');
+    } else if (index == 3) {
+      GoRouter.of(context).go('/about');
     }
   }
 }
