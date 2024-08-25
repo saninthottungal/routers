@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomNavBarPage extends StatelessWidget {
   const BottomNavBarPage({super.key, required this.child});
@@ -12,6 +13,7 @@ class BottomNavBarPage extends StatelessWidget {
         child: child,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: calculateSelectedIndex(context),
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
         items: const [
@@ -34,5 +36,20 @@ class BottomNavBarPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  int calculateSelectedIndex(BuildContext context) {
+    final String location = GoRouterState.of(context).uri.path;
+    if (location.startsWith('/home')) {
+      return 0;
+    } else if (location.startsWith('/profile')) {
+      return 1;
+    } else if (location.startsWith('/settings')) {
+      return 2;
+    } else if (location.startsWith('/about')) {
+      return 3;
+    } else {
+      return 0;
+    }
   }
 }
