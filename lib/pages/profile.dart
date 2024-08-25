@@ -5,8 +5,11 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("profile Page"),
+    return const PopScope(
+      canPop: false,
+      child: Center(
+        child: Text("profile Page"),
+      ),
     );
   }
 }

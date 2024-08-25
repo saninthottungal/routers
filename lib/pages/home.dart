@@ -5,8 +5,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Home Page"),
+    return const PopScope(
+      canPop: false,
+      child: Center(
+        child: Text("Home Page"),
+      ),
     );
   }
 }
