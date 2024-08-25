@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:routes/pages/about.dart';
+import 'package:routes/pages/bottom_nav_page.dart';
 import 'package:routes/pages/home.dart';
 import 'package:routes/pages/profile.dart';
 import 'package:routes/pages/settings.dart';
@@ -10,6 +11,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
     GlobalKey<NavigatorState>();
 
 final router = GoRouter(
+  initialLocation: '/home',
   navigatorKey: _rootNavigatorKey,
   routes: [
     ShellRoute(
@@ -32,6 +34,9 @@ final router = GoRouter(
           builder: (context, state) => const AboutPage(),
         ),
       ],
+      builder: (context, state, child) {
+        return BottomNavBarPage(child: child);
+      },
     ),
   ],
 );
